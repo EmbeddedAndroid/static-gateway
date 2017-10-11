@@ -11,6 +11,8 @@ services:
       - /var/run
       - /var/lock
       - /var/log
+    volumes:
+      - /var/run/dbus/system_bus_socket:/var/run/dbus/system_bus_socket
   cf-proxy-coap-http:
     image: registry.foundries.io/embeddedandroid/gateway-containers/cf-proxy-coap-http:latest
     read_only: true
