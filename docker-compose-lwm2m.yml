@@ -11,23 +11,20 @@ services:
       - /run
       - /var/lock
       - /var/log
-  mosquitto:
-    image: registry.foundries.io/embeddedandroid/gateway-containers/mosquitto:latest
+  cf-proxy-coap-http:
+    image: registry.foundries.io/embeddedandroid/gateway-containers/cf-proxy-coap-http:latest
     read_only: true
     restart: always
     network_mode: "host"
-    volumes:
-      - /tmp/mosquitto.conf:/etc/mosquitto/conf.d/mosquitto.conf
-  nginx-http-proxy:
+  nginx-coap-proxy:
     image: registry.foundries.io/embeddedandroid/gateway-containers/nginx:latest
     command: nginx-debug -g 'daemon off;'
     read_only: true
     restart: always
     network_mode: "host"
     extra_hosts:
-      - "gitci.com:192.168.1.18"
+      - "gitci.com:192.168.1.26"
     tmpfs:
       - /var/run
-      - /var/cache/nginx
     volumes:
-      - /tmp/nginx-http-proxy.conf:/etc/nginx/nginx.conf
+      - /tmp/nginx-lwm2m.conf:/etc/nginx/nginx.conf
