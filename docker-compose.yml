@@ -2,7 +2,7 @@ version: '3'
 
 services:
   bt-joiner:
-    image: registry.foundries.io/embeddedandroid/gateway-containers/bt-joiner:latest
+    image: registry.foundries.io/development/microplatforms/linux/gateway-containers/bt-joiner:latest
     privileged: true
     read_only: true
     restart: always
@@ -12,12 +12,12 @@ services:
       - /var/lock
       - /var/log
   cf-proxy-coap-http:
-    image: registry.foundries.io/embeddedandroid/gateway-containers/cf-proxy-coap-http:latest
+    image: registry.foundries.io/development/microplatforms/linux/gateway-containers/cf-proxy-coap-http:latest
     read_only: true
     restart: always
     network_mode: "host"
   nginx-coap-proxy:
-    image: registry.foundries.io/embeddedandroid/gateway-containers/nginx:latest
+    image: registry.foundries.io/development/microplatforms/linux/gateway-containers/nginx:latest
     command: nginx-debug -g 'daemon off;'
     read_only: true
     restart: always
@@ -29,14 +29,14 @@ services:
     volumes:
       - /tmp/nginx-lwm2m.conf:/etc/nginx/nginx.conf
   mosquitto:
-    image: registry.foundries.io/embeddedandroid/gateway-containers/mosquitto:latest
+    image: registry.foundries.io/development/microplatforms/linux/gateway-containers/mosquitto:latest
     read_only: true
     restart: always
     network_mode: "host"
     volumes:
       - /tmp/mosquitto.conf:/etc/mosquitto/conf.d/mosquitto.conf
   nginx-http-proxy:
-    image: registry.foundries.io/embeddedandroid/gateway-containers/nginx:latest
+    image: registry.foundries.io/development/microplatforms/linux/gateway-containers/nginx:latest
     command: nginx-debug -g 'daemon off;'
     read_only: true
     restart: always
