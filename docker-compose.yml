@@ -23,7 +23,7 @@ services:
     restart: always
     network_mode: "host"
     extra_hosts:
-      - "gitci.com:192.168.1.26"
+      - "mgmt.foundries.io:192.168.1.26"
     tmpfs:
       - /var/run
     volumes:
@@ -42,7 +42,7 @@ services:
     restart: always
     network_mode: "host"
     extra_hosts:
-      - "gitci.com:192.168.1.18"
+      - "mgmt.foundries.io:192.168.1.18"
     tmpfs:
       - /var/run
       - /var/cache/nginx
