@@ -12,7 +12,7 @@ services:
       - /var/lock
       - /var/log
     volumes:
-      - /tmp/bluetooth_6lowpand.conf:/etc/bluetooth/bluetooth_6lowpand.con
+      - /home/osf/tmp/bluetooth_6lowpand.conf:/etc/bluetooth/bluetooth_6lowpand.con
   cf-proxy-coap-http:
     image: registry.foundries.io/development/microplatforms/linux/gateway-containers/cf-proxy-coap-http:latest
     read_only: true
@@ -29,14 +29,14 @@ services:
     tmpfs:
       - /var/run
     volumes:
-      - /tmp/nginx-lwm2m.conf:/etc/nginx/nginx.conf
+      - /home/osf/tmp/nginx-lwm2m.conf:/etc/nginx/nginx.conf
   mosquitto:
     image: registry.foundries.io/development/microplatforms/linux/gateway-containers/mosquitto:latest
     read_only: true
     restart: always
     network_mode: "host"
     volumes:
-      - /tmp/mosquitto.conf:/etc/mosquitto/conf.d/mosquitto.conf
+      - /home/osf/tmp/mosquitto.conf:/etc/mosquitto/conf.d/mosquitto.conf
   nginx-http-proxy:
     image: registry.foundries.io/development/microplatforms/linux/gateway-containers/nginx:latest
     command: nginx-debug -g 'daemon off;'
@@ -49,4 +49,4 @@ services:
       - /var/run
       - /var/cache/nginx
     volumes:
-      - /tmp/nginx-http-proxy.conf:/etc/nginx/nginx.conf
+      - /home/osf/tmp/nginx-http-proxy.conf:/etc/nginx/nginx.conf
