@@ -12,7 +12,7 @@ services:
       - /var/lock
       - /var/log
     volumes:
-      - /home/osf/tmp/bluetooth_6lowpand.conf:/etc/bluetooth/bluetooth_6lowpand.con
+      - /home/osf/tmp/bluetooth_6lowpand.conf:/etc/bluetooth/bluetooth_6lowpand.conf
   cf-proxy-coap-http:
     image: registry.foundries.io/development/microplatforms/linux/gateway-containers/cf-proxy-coap-http:latest
     read_only: true
